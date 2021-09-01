@@ -1,3 +1,4 @@
+# coding=utf-8
 # Flash Isotermico multicomponente
 # Equipo 2: Gabriela, Saul y Adrian
 # Modelo Termodinamico: SRK
