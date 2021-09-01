@@ -19,7 +19,7 @@ z = np.array([0.0016, 0.193, 0.1363, 0.2515, 0.2742, 0.091, 0.0524])# Composicio
 # Parametros para definir la Ec. de SRK
 R = 8.314472 #Cte. de los gases [KPa-L/K-mol]
 Tr = T/T_c #Temperatura reducida
-Pr = P/Pc #Presion reducida
+Pr = P/P_c #Presion reducida
 m =  #Parametro del factor acentrico
 a =  #Parametro a
 b =  #Parametro b
