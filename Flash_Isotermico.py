@@ -21,6 +21,8 @@ z = np.array([0.0016, 0.193, 0.1363, 0.2515, 0.2742, 0.091, 0.0524])# Composicio
 R = 8.314472 #Cte. de los gases [KPa-L/K-mol]
 Tr = T/T_c #Temperatura reducida
 Pr = P/P_c #Presion reducida
-m =  #Parametro del factor acentrico
-a =  #Parametro a
-b =  #Parametro b
+m =  0.48 + 1.574*w - 0.176*w**2 #Parametro del factor acentrico
+a_i =  (0.42748*((R*T_c)**2)/P_c)*((1+m*(1-Tr**0.5)))**2 #Parametro a
+b_i =  0.08664*R*T_c/P_c #Parámetro b
+# Estimado inicial de Ki (Aproximación de Wilson)
+Ki = (P_c/P)**(5.37*(1+w)*(1-T_c/T))
