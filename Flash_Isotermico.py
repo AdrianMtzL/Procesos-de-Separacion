@@ -23,12 +23,55 @@ rho = np.array([1.165, 1.26, 1.264, 1.748, 1.882, 2.489, 2.489]) #Densidad del g
 # Parametros para definir la Ec. de SRK
 Tr = T/T_c #Temperatura reducida
 Pr = P/P_c #Presion reducida
-m =  0.48 + 1.574*w - 0.176*w**2 #Parametro del factor acentrico
-a =  (0.42748*((R*T_c)**2)/P_c)*((1+m*(1-Tr**0.5)))**2 #Parametro a
+m =  0.48 + 1.574*w - 0.176*(w**2) #Parametro del factor acentrico
+a =  (0.42748*((R*T_c)**2)/P_c)*(((1+m*(1-Tr**0.5)))**2) #Parametro a
 b =  0.08664*R*T_c/P_c #Parámetro b
 v = PM/rho #Volumen molar [L/mol]
 Psat = (R*T/(v-b))-(a/(v*(v+b))) # Ecuación de SRK
 Ki = Psat/P #Constante de equilibrio
 
+
 #Cálculo del Flash Isotérmico
 psi = 0.5 #Estimado inicial de la fracción Vapor, psi = V/F
+suma = 0
+suma2 = 0
+RR = (z*(1-Ki))/(1+psi*(Ki-1)) #Ecuacion de Rachford-Rice
+dRR = (z*(1-Ki)**2)/((1+psi*(Ki-1)))**2 #Derivada d(RR)/d(psi)
+
+#Estos dos ciclos for, sirven para sumar cada elemento de la ec. de RR y de d(RR)/d(psi)
+for num in RR:
+	
+	suma = suma + num
+	 #Sumatoria de la Ec. de RR
+	def RR(psi):
+		return suma
+
+for num in dRR:
+	
+	suma2 = suma2 + num
+	def dRR(psi):
+		return suma2
+
+def MetodoNewton(psi,tolerancia=0.001):
+	while True:
+		psi1 = psi - suma/suma2
+		tol = abs((psi1-psi)/psi1)
+		if tol<tolerancia:
+			break
+		psi=psi1
+	return psi
+
+psi0 = MetodoNewton(psi)
+print('psi: ', psi0)
+
+#Teniendo ambas sumatorias se puede empezar a buscar la raiz:
+#Método de Newton para 1 variable
+#for i in range(100):
+#	psinva = psi - float(RR(psi)/dRR(psi))
+#	if abs (psi-psinva)<0.001: break
+#	psi = psinva
+
+
+		
+
+
