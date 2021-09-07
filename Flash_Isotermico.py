@@ -13,7 +13,7 @@ z = np.array([0.0016, 0.193, 0.1363, 0.2515, 0.2742, 0.091, 0.0524])# Composicio
 # Propiedades de los compuestos puros
 Componentes = ['Nitrogeno','Etileno','Etano','Propileno','Propano','n-butano','i-butano']
 T_c = np.array([126.2, 282.34, 305.32, 364.9, 369.83, 425.12, 407.85]) #Temperatura critica [K]
-P_c = np.array([33.98, 50.41, 48.72, 46.0, 42.48, 37.96, 36.4]) #Presion critica [MPa]
+P_c = np.array([3.398, 5.041, 4.872, 4.60, 4.248, 3.796, 3.64]) #Presion critica [MPa]
 P_c = P_c*1000 #Preción crítica, conversión a [kPa]
 w = np.array([0.037, 0.087, 0.099, 0.142, 0.152, 0.2, 0.186]) #Factor acentrico
 R = 8.314472 #Cte. de los gases [KPa-L/K-mol]
